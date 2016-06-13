@@ -1,0 +1,16 @@
+router:
+  image: nginx
+  ports:
+   - "8000:80"
+  volumes:
+   - ./conf/router.conf:/etc/nginx/nginx.conf:ro
+  links:
+   - timeweb:time-web
+
+timeweb:
+  image: nginx
+  ports:
+   - "8001:80"
+  volumes:
+   - ./conf/time.conf:/etc/nginx/nginx.conf:ro
+   - ./content/time:/data/www:ro
