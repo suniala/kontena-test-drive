@@ -1,0 +1,16 @@
+---
+version: '2'
+name: kontana-test-drive
+services:
+  router:
+    extends:
+      file: docker-compose.yml
+      service: router
+  timeweb:
+    extends:
+      file: docker-compose.yml
+      service: timeweb
+  weatherweb:
+    extends:
+      file: docker-compose.yml
+      service: weatherweb
