@@ -1,29 +1,26 @@
-version: '2'
+router:
+  image: nginx
+  ports:
+   - "8000:80"
+  volumes:
+   - ./data/router/nginx:/etc/nginx:ro
+  links:
+   - timeweb:time-web
+   - weatherweb:weather-web
 
-services:
-  router:
-    image: nginx
-    ports:
-     - "8000:80"
-    volumes:
-     - ./data/router/nginx:/etc/nginx:ro
-    links:
-     - timeweb:time-web
-     - weatherweb:weather-web
+timeweb:
+  image: nginx
+  ports:
+   - "8001:80"
+  volumes:
+   - ./data/time/nginx:/etc/nginx:ro
+   - ./data/time/www:/data/www:ro
 
-  timeweb:
-    image: nginx
-    ports:
-     - "8001:80"
-    volumes:
-     - ./data/time/nginx:/etc/nginx:ro
-     - ./data/time/www:/data/www:ro
-
-  weatherweb:
-    image: nginx
-    ports:
-     - "8002:80"
-    volumes:
-     - ./data/weather/nginx:/etc/nginx:ro
-     - ./data/weather/www:/data/www:ro
+weatherweb:
+  image: nginx
+  ports:
+   - "8002:80"
+  volumes:
+   - ./data/weather/nginx:/etc/nginx:ro
+   - ./data/weather/www:/data/www:ro
 
