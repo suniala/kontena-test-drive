@@ -3,7 +3,7 @@ router:
   ports:
    - "8000:80"
   volumes:
-   - ./conf/router.conf:/etc/nginx/nginx.conf:ro
+   - ./data/router/nginx:/etc/nginx:ro
   links:
    - timeweb:time-web
    - weatherweb:weather-web
@@ -13,13 +13,13 @@ timeweb:
   ports:
    - "8001:80"
   volumes:
-   - ./conf/time.conf:/etc/nginx/nginx.conf:ro
-   - ./content/time:/data/www:ro
+   - ./data/time/nginx:/etc/nginx:ro
+   - ./data/time/www:/data/www:ro
 
 weatherweb:
   image: nginx
   ports:
    - "8002:80"
   volumes:
-   - ./conf/weather.conf:/etc/nginx/nginx.conf:ro
-   - ./content/weather:/data/www:ro
+   - ./data/weather/nginx:/etc/nginx:ro
+   - ./data/weather/www:/data/www:ro
