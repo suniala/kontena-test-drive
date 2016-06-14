@@ -3,11 +3,20 @@ router:
   extends:
     file: docker-compose.yml
     service: router
+  volumes:
+   - /data/kontena-test-drive/data/router/nginx:/etc/nginx:ro
+   - /data/kontena-test-drive/data/router/www:/data/www:ro
 timeweb:
   extends:
     file: docker-compose.yml
     service: timeweb
+  volumes:
+   - /data/kontena-test-drive/data/time/nginx:/etc/nginx:ro
+   - /data/kontena-test-drive/data/time/www:/data/www:ro
 weatherweb:
   extends:
     file: docker-compose.yml
     service: weatherweb
+  volumes:
+   - /data/kontena-test-drive/data/weather/nginx:/etc/nginx:ro
+   - /data/kontena-test-drive/data/weather/www:/data/www:ro
